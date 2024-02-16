@@ -1,0 +1,24 @@
+{% extends "strategy_pages/base.html" %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <div class="login-page">
+      {% for item in object_list %}
+      <div class="card">
+        <h5 class="card-header">{{ item.title }}</h5>
+        <div class="card-body">
+          <h5>{{ item.content }}</h5>
+          <h6>{{ item.created_at }}/{{ item.author }}</h6>
+          <a href="{% url 'detail' item.pk %}" class="btn btn-primary">詳細情報</a>
+          {% comment %} 
+          <a href="{% url 'update' item.pk %}" class="btn btn-primary">編集</a>
+          <a href="{% url 'delete' item.pk %}" class="btn btn-primary">削除</a> 
+          編集・削除ボタンの実装完了。セキュリティ改善後適応予定。
+          {% endcomment %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock content %}

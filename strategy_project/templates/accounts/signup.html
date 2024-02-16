@@ -1,0 +1,26 @@
+{% extends "accounts/template.html" %}
+
+{% block title %}
+SIGNUP PAGE
+{% endblock title %}
+
+{% block content %}
+<body>
+  <div class="login-page">
+    <div class="form">
+      <form class="register-form" method='post' action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'>create</button>
+        <p class="message">Already registered? <a href="#">Sign In</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock content %}
+
+<script>
+  $('.message a').click(function(){
+    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+ }); 
+</script>

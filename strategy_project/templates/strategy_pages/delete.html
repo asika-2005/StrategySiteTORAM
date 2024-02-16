@@ -1,0 +1,10 @@
+{% extends "strategy_pages/base.html" %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<form action="" method="POST">{% csrf_token %}
+  <input type="submit" value="記事の削除">
+</form>
+{% endblock content %}

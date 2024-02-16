@@ -1,0 +1,15 @@
+{% extends "strategy_pages/base.html" %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class="login-page">
+  <div class="form">
+    <form action="" method="POST">{% csrf_token %} {% comment %}templateを対応させた時の入力欄のずれを修正する。{% endcomment %}
+      {{ form.as_p }}
+      <input type="submit" value="攻略情報の登録">
+    </form>
+  </div>
+</div>
+{% endblock content %}

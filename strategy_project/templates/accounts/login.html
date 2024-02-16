@@ -1,0 +1,26 @@
+{% extends "accounts/template.html" %}
+
+{% block title %}
+LOGIN PAGE
+{% endblock title %}
+
+{% block content %}
+<body>
+  <div class="login-page">
+    <div class="form">
+      <form class="login-form" method='post' action="{% url 'accounts:login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'>login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock content %}
+
+<script>
+  $('.message a').click(function(){
+    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+ }); 
+</script>

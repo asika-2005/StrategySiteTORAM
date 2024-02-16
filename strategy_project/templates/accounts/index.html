@@ -1,0 +1,15 @@
+{% extends "accounts/template.html" %}
+
+{% block title %}
+index
+{% endblock title %}
+
+{% block content %}
+<div class="login-page">
+  <div class="form">
+    <h1>INDEX PAGE</h1>
+    <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary">Login page</a>
+    <a href="{% url 'accounts:signup' %}" class="btn btn-outline-primary">Signup page</a>
+  </div>
+</div>
+{% endblock content %}
