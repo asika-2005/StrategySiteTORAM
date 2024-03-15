@@ -22,6 +22,7 @@ urlpatterns = [
     path('chat/',include('chat.urls')),
     path('strategy/',include('strategy_pages.urls')),
     path('',include('top_page.urls')),
+    path('new_chat/',include('new_chat.urls')),
     # path('list/',include('strategy_pages.urls')),
     # path('detail/', include('strategy_pages.urls'))
 ]
