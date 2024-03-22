@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,4 @@ urlpatterns = [
     path('new_chat/',include('new_chat.urls')),
     # path('list/',include('strategy_pages.urls')),
     # path('detail/', include('strategy_pages.urls'))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

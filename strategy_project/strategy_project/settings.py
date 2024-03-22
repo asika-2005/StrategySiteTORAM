@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import os
+import os.path
 from pathlib import Path
 from dotenv import load_dotenv 
 
@@ -130,7 +130,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+# PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+
+STATIC_ROOT = BASE_DIR / "static"
+STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = 'accounts.User'
 

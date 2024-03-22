@@ -2,7 +2,8 @@ from channels.generic.websocket import AsyncJsonWebsocketConsumer
 from channels.db import database_sync_to_async
 from datetime import datetime
 from . import models
-from accounts import models
+
+print('consumers:line7')
 
 # ベースとなるConsumerクラス
 class _BaseConsumer(AsyncJsonWebsocketConsumer):
@@ -11,13 +12,14 @@ class _BaseConsumer(AsyncJsonWebsocketConsumer):
         self.prefix = kwargs.pop('prefix', 'base')
         self.room = None
         super().__init__(*args, **kwargs)
-        
+
     # 現時刻を取得するメソッド
     def get_current_time(self):
         return datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     # ユーザ識別用のキーを取得するメソッド
     def get_client_key(self, user):
         return f'user{user.pk}'
+    
     # 接続時の後処理を行うメソッド
     async def post_accept(self, user):
         raise NotImplementedError
@@ -67,6 +69,7 @@ class ChatConsumer(_BaseConsumer):
 
     # 接続時の後処理
     async def post_accept(self, user):
+        print('consumers:line70')
         # Send message to group
         await self.channel_layer.group_send(
             self.group_name, {
@@ -100,7 +103,7 @@ class ChatConsumer(_BaseConsumer):
 
     # Send message by system on connection or disconnection
     async def send_system_message(self, event):
-        print("print,consumers.py line101" , message)
+        print("print,consumers.py line101" )
         try:
             room_name = str(self.room)
             is_connected = event['is_connected']

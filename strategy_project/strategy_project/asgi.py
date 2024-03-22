@@ -22,9 +22,10 @@ from channels.routing import ProtocolTypeRouter
 from channels.routing import URLRouter
 from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator
-import chat.routing
+# import chat.routing
+from new_chat import routing
 
 application = ProtocolTypeRouter({
   'http': django_asgi_app,
-  'websocket': AllowedHostsOriginValidator(AuthMiddlewareStack( URLRouter( chat.routing.websocket_urlpatterns ) )),
+  'websocket': AllowedHostsOriginValidator(AuthMiddlewareStack( URLRouter( routing.websocket_urlpatterns ) )),
 })
